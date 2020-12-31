@@ -10,6 +10,7 @@ if __name__ == '__main__':
         'by_expression',
         'by_decode',
         'by_accumulator',
+        'by_mapping',
         'by_tables',
         'by_boolean_multiplication',
         'by_lambda_decode',

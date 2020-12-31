@@ -2,12 +2,12 @@
 Ten common and less common methods for counting FizzBuzz.
 """
 from functools import partial
-from typing import List, Iterable, Iterator
-
-from itertools import cycle, count, takewhile
+from itertools import cycle, count
+from typing import List, Iterator
 
 
 class FizzBuzz:
+    map = {3: 'Fizz', 5: 'Buzz'}
     fizzes = ['Fizz', '', '']
     buzzes = ['Buzz', '', '', '', '']
     encoding = [3, 0, 0, 1, 0, 2, 1, 0, 0, 1, 2, 0, 1, 0, 0]
@@ -48,6 +48,9 @@ class FizzBuzz:
             answer += 'Buzz'
         return answer if answer else str(num)
 
+    def by_mapping(self, num: int) -> str:
+        return ''.join(s for m, s in self.map.items() if num % m == 0) or str(num)
+
     def by_tables(self, num: int) -> str:
         return self.fizzes[num % 3] + self.buzzes[num % 5] or str(num)
 
@@ -83,8 +86,7 @@ class FizzBuzz:
 
     def by_framework(self, num: int) -> str:
         """
-        This is real magic, or? No. It is a framework. Can easily be extended to handle additional divisors.
-        Caveat: Frameworks may have unexpected effect on your project's performance, due to hidden runtime complexity.
+        Can easily be extended to handle additional divisors.
         """
 
         def make(divisor, text, func):
