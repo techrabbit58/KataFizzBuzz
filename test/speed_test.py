@@ -14,6 +14,16 @@ def speed_test(method: Callable[[int], str]) -> str:
     return f'{method.__name__:>25s} - {(time.perf_counter() - start) * 1000:6.4f} ms'
 
 
+def common_solution(n: int) -> str:
+    if n % 15 == 0:
+        return 'FizzBuzz'
+    if n % 3 == 0:
+        return 'Fizz'
+    if n % 5 == 0:
+        return 'Buzz'
+    return str(n)
+
+
 def extra_method(n: int, modules: Tuple[Tuple[int, str]] = ((3, 'Fizz'), (5, 'Buzz'))) -> str:
     res = ''
     for mod, s in modules:
@@ -29,7 +39,7 @@ if __name__ == '__main__':
     methods: List[Callable[[int], str]] = [fb.by_cheating, fb.by_expression, fb.by_boolean_multiplication,
                                            fb.by_accumulator, fb.by_decode, fb.by_tables, fb.by_mapping,
                                            fb.by_lambda_decode, fb.by_framework, fb.by_functions,
-                                           extra_method]
+                                           common_solution, extra_method]
 
     for m in methods:
         print(speed_test(m))
