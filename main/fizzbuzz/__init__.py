@@ -49,6 +49,10 @@ class FizzBuzz:
         return answer if answer else str(num)
 
     def by_mapping(self, num: int) -> str:
+        """
+        Dictionaries are ordered by sequence of item insertion, since python 3.5;
+        Using older versions of python may produce unexpected results.
+        """
         return ''.join(s for m, s in self.map.items() if num % m == 0) or str(num)
 
     def by_tables(self, num: int) -> str:
