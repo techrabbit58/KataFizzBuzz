@@ -7,7 +7,7 @@ from typing import List, Iterator
 
 
 class FizzBuzz:
-    map = {3: 'Fizz', 5: 'Buzz'}
+    map = ((3, 'Fizz'), (5, 'Buzz'))
     fizzes = ['Fizz', '', '']
     buzzes = ['Buzz', '', '', '', '']
     encoding = [3, 0, 0, 1, 0, 2, 1, 0, 0, 1, 2, 0, 1, 0, 0]
@@ -49,11 +49,7 @@ class FizzBuzz:
         return answer if answer else str(num)
 
     def by_mapping(self, num: int) -> str:
-        """
-        Dictionaries are ordered by sequence of item insertion, since python 3.5;
-        Using older versions of python may produce unexpected results.
-        """
-        return ''.join(s for m, s in self.map.items() if num % m == 0) or str(num)
+        return ''.join(s for m, s in self.map if num % m == 0) or str(num)
 
     def by_tables(self, num: int) -> str:
         return self.fizzes[num % 3] + self.buzzes[num % 5] or str(num)
